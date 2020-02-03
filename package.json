@@ -1,0 +1,49 @@
+{
+  "name": "reviews",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "build": "webpack -d --watch",
+    "start": "nodemon ./server/index.js",
+    "do:sass": "node-sass -r --output-style compressed style.scss -o client/dist",
+    "watch:sass": "npm run do:sass && npm run do:sass -- -w"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "bootstrap": "^4.3.1",
+    "cors": "^2.8.5",
+    "css-loader": "^3.4.2",
+    "express": "^4.16.4",
+    "mongoose": "^4.9.6",
+    "morgan": "^1.9.1",
+    "node-sass": "^4.13.1",
+    "nodemon": "^1.18.10",
+    "path": "0.12.7",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "sass": "^1.25.0",
+    "style-loader": "^1.1.3",
+    "xcode": "^2.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "babel-loader": "^8.0.5",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Front-End-Capstone-hrla34/Reviews.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Front-End-Capstone-hrla34/Reviews/issues"
+  },
+  "homepage": "https://github.com/Front-End-Capstone-hrla34/Reviews#readme"
+}
