@@ -365,9 +365,10 @@ align-items: center;
     .jp-reviews-2-boxTwoThree-row3-row-3-col-1 {
     display: flex;
     flex-direction: column;
-    border: 1px solid #e6e6e6;
+  
     flex-grow: 6;
     line-height: 1em;
+    background: white;
   
     }
     
@@ -379,11 +380,27 @@ align-items: center;
       grid-row-gap: 0px;
       }
       
+      .jp-reviews-2-bars {
+        background: fbfbfb;
+        width: 100%;
+        height: 13px;
+        border: 0.5px solid #e6e6e6;
+        background: #fbfbfb;
+        border-radius: 0px 6px 6px 0px;
+        margin-bottom: 12px;
+        line-height: 1em;
+        position: relative;
+      }
       .jp-reviews-2-bars-fill {
         background: rgb(244, 218, 28);
+        height: inherit;
+        overflow: hidden;
+        line-height: 1em;
+        position: absolute;
+         
       }
       .jp-reviews-2-bars-space {
-        margin-bottom: 5px;
+        margin-bottom: 10px;
       }
       // .jp-reviews-2-boxTwoThree-row3-row-2-div1 { 
       //   grid-area: 1 / 1 / 2 / 2;

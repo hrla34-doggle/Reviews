@@ -218,25 +218,83 @@ popularList() {
                     </div>
                     <div className = "jp-reviews-2-boxTwoThree-row3-row-2-col-1">
                         <div className = "jp-reviews-2-bars-space">5</div>
-                        <div>4</div>
-                        <div>3</div>
-                        <div>2</div>
-                        <div>1</div>
+                        <div className = "jp-reviews-2-bars-space">4</div>
+                        <div className = "jp-reviews-2-bars-space">3</div>
+                        <div className = "jp-reviews-2-bars-space">2</div>
+                        <div className = "jp-reviews-2-bars-space">1</div>
                     </div>
                     <div className = "jp-reviews-2-boxTwoThree-row3-row-2-col-2"> 
-                    <div >★</div>
-                    <div>★</div>
-                    <div>★</div>
-                    <div>★</div>
-                    <div>★</div>
+                    <div className = "jp-reviews-2-bars-space">★</div>
+                    <div className = "jp-reviews-2-bars-space">★</div>
+                    <div className = "jp-reviews-2-bars-space">★</div>
+                    <div className = "jp-reviews-2-bars-space">★</div>
+                    <div className = "jp-reviews-2-bars-space">★</div>
                     </div>
                     <div className = "jp-reviews-2-boxTwoThree-row3-row-3-col-1">
-                        <div className = "jp-reviews-2-bars-fill" style = {{width: `${this.state.averageScore *20}%`}}>d</div>
-                        <div>2</div>
+                        <div className = "jp-reviews-2-bars"> 
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        </div>
+                        <div className = "jp-reviews-2-bars"> 
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        </div>
+                        <div className = "jp-reviews-2-bars"> 
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        </div>
+                        <div className = "jp-reviews-2-bars"> 
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        </div>
+                        <div className = "jp-reviews-2-bars"> 
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className = "jp-reviews-2-boxTwoThree">HI</div>
+            <div className = "jp-reviews-2-boxTwoThree">
+                <div className = "jp-reviews-2-boxTwoThree-row-1">Trip Rating</div>
+                <div className = "jp-reviews-2-boxTwoThree-row-2">Trip rating is the overall quality of the intinerary and trip</div>
+                <div className = "jp-reviews-2-boxTwoThree-row-3">
+                    <div className = "jp-reviews-2-boxTwoThree-row3-row-1">
+                        <div className = "jp-reviews-2-boxTwoThree-row3-row-1-column-1">{this.state.averageScore}</div>
+                        <div className = "jp-reviews-2-boxTwoThree-row3-row-1-column-2">OUT OF 5</div>
+                        <div className="jp-reviews-2-rating-lowest">
+                             <div className="jp-reviews-2-rating-lowest-upper" style = {{width: `${this.state.averageScore *20}%`}}><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span></div>
+                             <div className="jp-reviews-2-rating-lowest-lower"><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span></div>
+                        </div>
+                    
+                    </div>
+                    <div className = "jp-reviews-2-boxTwoThree-row3-row-2-col-1">
+                        <div className = "jp-reviews-2-bars-space">5</div>
+                        <div className = "jp-reviews-2-bars-space">4</div>
+                        <div className = "jp-reviews-2-bars-space">3</div>
+                        <div className = "jp-reviews-2-bars-space">2</div>
+                        <div className = "jp-reviews-2-bars-space">1</div>
+                    </div>
+                    <div className = "jp-reviews-2-boxTwoThree-row3-row-2-col-2"> 
+                    <div className = "jp-reviews-2-bars-space">★</div>
+                    <div className = "jp-reviews-2-bars-space">★</div>
+                    <div className = "jp-reviews-2-bars-space">★</div>
+                    <div className = "jp-reviews-2-bars-space">★</div>
+                    <div className = "jp-reviews-2-bars-space">★</div>
+                    </div>
+                    <div className = "jp-reviews-2-boxTwoThree-row3-row-3-col-1">
+                        <div className = "jp-reviews-2-bars"> 
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        </div>
+                        <div className = "jp-reviews-2-bars"> 
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        </div>
+                        <div className = "jp-reviews-2-bars"> 
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        </div>
+                        <div className = "jp-reviews-2-bars"> 
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        </div>
+                        <div className = "jp-reviews-2-bars"> 
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
           </div> 
           <div>Lines Inner row divs</div>
