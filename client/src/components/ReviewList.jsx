@@ -4,16 +4,24 @@ import Emoji from "./Emoji.jsx"
   
 const ReviewList = (props) => {
    return(
-    <div className ="jp-review-list">
-    <div className="jp-star-ratings-css">
-  <div className="jp-star-ratings-css-top" style = {{width: `${props.review.score *20}%`}}><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-  <div className="jp-star-ratings-css-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+     <div className ="jp-reviews-2-list">
+      <div className = "jp-reviews-2-name">{props.review.name}</div>
+ 
+    
+    <div className = "jp-reviews-2-dates">{props.review.time} </div>
+   
+    <div className = "jp-reviews-2-description">""{props.review.description}</div>
+   <div className ="jp-reviews-2-tripRating">
+      <div>Trip Rating  </div>
+      <div className="jp-reviews-2-rating-medium">
+  <div className="jp-reviews-2-rating-medium-upper" style = {{width: `${props.review.score *20}%`}}><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span></div>
+  <div className="jp-reviews-2-rating-medium-lower"><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span></div>
 </div>
+<div> {props.review.score}</div>
 
-    <div className = "jp-name">{props.review.name}</div>
-    <div className = "jp-dates">- {props.review.time} </div>
-    <div className = "jp-description">{props.review.description}</div>
-    <div className = "jp-review-emoji"><Emoji symbol ="👍"/>{props.review.likes}</div>
+   </div>
+   <div>{props.review.description} </div>
+   <div className = "jp-reviews-2-customerRating"></div>
     
 </div>
   
@@ -21,5 +29,6 @@ const ReviewList = (props) => {
 }
 
 export default ReviewList
+
 
 

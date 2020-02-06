@@ -22,7 +22,7 @@ const createProduct = () => {
 
 const createProducts = () => {
   let productsArr = [];
-  for(let i = 0; i < 100; i++){
+  for(let i = 0; i < 200; i++){
       var tempObj = createProduct();
       tempObj.id = i+1;
     productsArr.push(tempObj);

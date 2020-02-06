@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App.jsx';
+import UpdatedApp from './components/UpdatedApp.jsx';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(<UpdatedApp />, document.getElementById('app'));
 
 console.log(document.getElementById('app'));
