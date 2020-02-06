@@ -12,7 +12,11 @@ var reviewSchema = new mongoose.Schema({
     score: Number,
     description: String,
     likes: Number,
-    time: Number
+    time: Number,
+    customerScore: Number,
+    customerReview: String,
+    quotes: String,
+    trips: String,
   });
 
   var Reviews = mongoose.model('Reviews', reviewSchema);   

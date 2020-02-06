@@ -13,6 +13,18 @@ class UpdatedApp extends React.Component {
       newest: [],
       popular: [],
       averageScore: 0,
+      tripRating: 0,
+      customerRating: 0,
+      tripFive: 0,
+      tripFour: 0,
+      tripThree: 0,
+      tripTwo: 0,
+      tripOne: 0,
+      customerFive: 0,
+      customerFour: 0,
+      customerThree: 0,
+      customerTwo: 0,
+      customerOne: 0,
       indexStart: 0,
       indexEnd: 1,
       isPressed: false,
@@ -20,7 +32,8 @@ class UpdatedApp extends React.Component {
       newestButton: "jp-clicked",
       showPrevious: false,
       showFirst: false,
-      showNext: true
+      showNext: true,
+      country: ""
     }
       this.getList = this.getList.bind(this);
       this.next = this.next.bind(this);
@@ -46,9 +59,55 @@ class UpdatedApp extends React.Component {
     .get('/api') 
     .then((data) => {
         let averagedScore = 0;
+        let tripAverage = 0;
+        let customerAverage = 0;
+        let customerScore = 0;
+        let tripScore = 0;
         let tempTime = 0;
+        let customerScoreFive = 0;
+        let customerScoreFour = 0;
+        let customerScoreThree = 0;
+        let customerScoreTwo = 0;
+        let customerScoreOne = 0;
+        let tripScoreFive = 0;
+        let tripScoreFour = 0;
+        let tripScoreThree = 0;
+        let tripScoreTwo = 0;
+        let tripScoreOne = 0;
         for (var i = 0; i < data.data.length; i++) {
-            averagedScore += data.data[i].score;
+            
+             tripScore += data.data[i].score;
+             customerScore += data.data[i].customerScore;
+             if (data.data[i].score === 5) {
+                 tripScoreFive++;
+             }
+             if (data.data[i].score === 4) {
+                tripScoreFour++;
+            }
+            if (data.data[i].score === 3) {
+                tripScoreThree++;
+            }
+            if (data.data[i].score === 2) {
+                tripScoreTwo++;
+            }
+            if (data.data[i].score === 1) {
+                tripScoreOne++;
+            }
+            if (data.data[i].customerScore === 5) {
+                customerScoreFive++;
+            }
+            if (data.data[i].customerScore === 4) {
+                customerScoreFour++;
+           }
+           if (data.data[i].customerScore === 3) {
+                customerScoreThree++;
+           }
+           if (data.data[i].customerScore === 2) {
+               customerScoreTwo++;
+           }
+           if (data.data[i].customerScore === 1) {
+               customerScoreOne++;
+           }
             if (data.data[i].time <60) {
                 data.data[i].time = data.data[i].time + " seconds ago";
             }
@@ -73,7 +132,9 @@ class UpdatedApp extends React.Component {
                 data.data[i].time = tempTime + " years ago"; 
             }
         }
-        averagedScore = parseFloat(averagedScore / (data.data.length +1)).toFixed(1);
+        tripAverage = parseFloat( tripScore/ (data.data.length)).toFixed(1);
+        customerAverage = parseFloat(customerScore / (data.data.length)).toFixed(1);
+        averagedScore = parseFloat((tripScore + customerScore) / (data.data.length *2)).toFixed(1);
         let popularSorted = data.data.slice().sort(function(a, b) { 
           return b.likes - a.likes;
         });
@@ -82,6 +143,19 @@ class UpdatedApp extends React.Component {
         newest: data.data,
         popular: popularSorted,
         averageScore: averagedScore,
+        tripRating: tripAverage,
+        customerRating: customerAverage,
+        tripFive: tripScoreFive,
+        tripFour: tripScoreFour,
+        tripThree: tripScoreThree,
+        tripTwo: tripScoreTwo,
+        tripOne: tripScoreOne,
+        customerFive: customerScoreFive,
+        customerFour: customerScoreFour,
+        customerThree: customerScoreThree,
+        customerTwo: customerScoreTwo,
+        customerOne: customerScoreOne,
+        country: data.data[0].trips
         })
     })
     .catch((err) => {
@@ -180,7 +254,7 @@ popularList() {
                   <div className = "jp-reviews-2-designs">JP Designs</div>
               </div>
               <div className = "jp-review-2-slogan">LIVE UNEDITED &amp; INDEPENDENT TRAVELLERS REVIEWS</div>
-            <div className = "jp-reviews-2-title">Hawaiian Explorer Premium Trip Reviews</div>
+            <div className = "jp-reviews-2-title">{this.state.country} Explorer Premium Trip Reviews</div>
           <div className = "jp-reviews-2-staticDescription">Our guests are at the heart of everything we do, their feedback fuels our innovation, inspiring us to improve continuously and craft Simply The Best vacations. That's why we ask each of our guests to leave a third-party verified, independent review after every trip. As testament to our commitment we have been given the Trusted Service Award from Jonathan Parker, recognising we deliver exceptional experiences as rated by real guests.</div>
           <div className = "jp-reviews-2-inner-container">
             <div className = "jp-reviews-2-boxOne">
@@ -208,10 +282,10 @@ popularList() {
                 <div className = "jp-reviews-2-boxTwoThree-row-2">Trip rating is the overall quality of the intinerary and trip</div>
                 <div className = "jp-reviews-2-boxTwoThree-row-3">
                     <div className = "jp-reviews-2-boxTwoThree-row3-row-1">
-                        <div className = "jp-reviews-2-boxTwoThree-row3-row-1-column-1">{this.state.averageScore}</div>
+                        <div className = "jp-reviews-2-boxTwoThree-row3-row-1-column-1">{this.state.tripRating}</div>
                         <div className = "jp-reviews-2-boxTwoThree-row3-row-1-column-2">OUT OF 5</div>
                         <div className="jp-reviews-2-rating-lowest">
-                             <div className="jp-reviews-2-rating-lowest-upper" style = {{width: `${this.state.averageScore *20}%`}}><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span></div>
+                             <div className="jp-reviews-2-rating-lowest-upper" style = {{width: `${this.state.tripRating *20}%`}}><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span></div>
                              <div className="jp-reviews-2-rating-lowest-lower"><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span></div>
                         </div>
                     
@@ -232,32 +306,40 @@ popularList() {
                     </div>
                     <div className = "jp-reviews-2-boxTwoThree-row3-row-3-col-1">
                         <div className = "jp-reviews-2-bars"> 
-                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${((this.state.tripFive) / this.state.reviews.length) *100}%`}}></div>
                         </div>
                         <div className = "jp-reviews-2-bars"> 
-                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${((this.state.tripFour) / this.state.reviews.length) *100}%`}}></div>
                         </div>
                         <div className = "jp-reviews-2-bars"> 
-                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${((this.state.tripThree) / this.state.reviews.length) *100}%`}}></div>
                         </div>
                         <div className = "jp-reviews-2-bars"> 
-                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${((this.state.tripTwo) / this.state.reviews.length) *100}%`}}></div>
                         </div>
                         <div className = "jp-reviews-2-bars"> 
-                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${((this.state.tripOne) / this.state.reviews.length) *100}%`}}></div>
                         </div>
+                    </div>
+                    <div className = "jp-reviews-2-boxTwoThree-row3-row-4-col-1">
+                        <div className = "jp-reviews-2-bars-space">{this.state.tripFive}</div>
+                        <div className = "jp-reviews-2-bars-space">{this.state.tripFour}</div>
+                        <div className = "jp-reviews-2-bars-space">{this.state.tripThree}</div>
+                        <div className = "jp-reviews-2-bars-space">{this.state.tripTwo}</div>
+                        <div className = "jp-reviews-2-bars-space">{this.state.tripOne}</div>
+
                     </div>
                 </div>
             </div>
             <div className = "jp-reviews-2-boxTwoThree">
-                <div className = "jp-reviews-2-boxTwoThree-row-1">Trip Rating</div>
-                <div className = "jp-reviews-2-boxTwoThree-row-2">Trip rating is the overall quality of the intinerary and trip</div>
+                <div className = "jp-reviews-2-boxTwoThree-row-1">Customer Experience</div>
+                <div className = "jp-reviews-2-boxTwoThree-row-2">Customer experience is the standard of service you receive</div>
                 <div className = "jp-reviews-2-boxTwoThree-row-3">
                     <div className = "jp-reviews-2-boxTwoThree-row3-row-1">
-                        <div className = "jp-reviews-2-boxTwoThree-row3-row-1-column-1">{this.state.averageScore}</div>
+                        <div className = "jp-reviews-2-boxTwoThree-row3-row-1-column-1">{this.state.customerRating}</div>
                         <div className = "jp-reviews-2-boxTwoThree-row3-row-1-column-2">OUT OF 5</div>
                         <div className="jp-reviews-2-rating-lowest">
-                             <div className="jp-reviews-2-rating-lowest-upper" style = {{width: `${this.state.averageScore *20}%`}}><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span></div>
+                             <div className="jp-reviews-2-rating-lowest-upper" style = {{width: `${this.state.customerRating *20}%`}}><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span></div>
                              <div className="jp-reviews-2-rating-lowest-lower"><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span></div>
                         </div>
                     
@@ -278,20 +360,28 @@ popularList() {
                     </div>
                     <div className = "jp-reviews-2-boxTwoThree-row3-row-3-col-1">
                         <div className = "jp-reviews-2-bars"> 
-                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${((this.state.customerFive) / this.state.reviews.length) *100}%`}}></div>
                         </div>
                         <div className = "jp-reviews-2-bars"> 
-                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${((this.state.customerFour) / this.state.reviews.length) *100}%`}}></div>
                         </div>
                         <div className = "jp-reviews-2-bars"> 
-                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${((this.state.customerThree) / this.state.reviews.length) *100}%`}}></div>
                         </div>
                         <div className = "jp-reviews-2-bars"> 
-                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${((this.state.customerTwo) / this.state.reviews.length) *100}%`}}></div>
                         </div>
                         <div className = "jp-reviews-2-bars"> 
-                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${this.state.averageScore *20}%`}}></div>
+                        <div className = "jp-reviews-2-bars-fill jp-reviews-2-bars-space" style = {{width: `${((this.state.customerOne) / this.state.reviews.length) *100}%`}}></div>
                         </div>
+                    </div>
+                    <div className = "jp-reviews-2-boxTwoThree-row3-row-4-col-1">
+                        <div className = "jp-reviews-2-bars-space">{this.state.customerFive}</div>
+                        <div className = "jp-reviews-2-bars-space">{this.state.customerFour}</div>
+                        <div className = "jp-reviews-2-bars-space">{this.state.customerThree}</div>
+                        <div className = "jp-reviews-2-bars-space">{this.state.customerTwo}</div>
+                        <div className = "jp-reviews-2-bars-space">{this.state.customerOne}</div>
+
                     </div>
                 </div>
             </div>
