@@ -41,7 +41,7 @@ class UpdatedApp extends React.Component {
       this.popularList = this.popularList.bind(this);
       this.previous = this.previous.bind(this);
       this.first = this.first.bind(this);
-      this.scrollToRef = this.scrollToRef.bind(this);
+    //   this.scrollToRef = this.scrollToRef.bind(this);
     //   this.itemClickSelection = this.itemClickSelection.bind(this);
     //   this.postItem = this.postItem.bind(this);
     //   this.updateItem = this.updateItem.bind(this);
@@ -52,7 +52,7 @@ class UpdatedApp extends React.Component {
     this.getList();
     // this.reviewRef.current.focus();
   }
-  scrollToRef = () => window.scrollTo({left: 0, top: this.reviewRef.current.offsetTop, behavior: 'smooth'}) 
+//   scrollToRef = () => window.scrollTo({left: 0, top: this.reviewRef.current.offsetTop, behavior: 'smooth'}) 
 
   getList() {
     axios
@@ -164,66 +164,54 @@ class UpdatedApp extends React.Component {
   }
 
 next() {
-  if (this.state.indexEnd === 20) {
+  if (this.state.indexEnd === this.state.reviews.length-1) {
     this.setState({
-      indexStart: this.state.indexStart+10,
-      indexEnd: this.state.indexEnd +10,
+      indexStart: this.state.indexStart +1,
+      indexEnd: this.state.indexEnd +1,
       showPrevious: true,
-      showFirst: true
+      showNext: false 
     });
   }
-  else if (this.state.reviews.length- this.state.indexEnd > 10) {
+  else if (this.state.indexEnd === 1) {
   this.setState({
-    indexStart: this.state.indexStart+10,
-    indexEnd: this.state.indexEnd +10,
-    showPrevious: true
+    indexStart: this.state.indexStart+1,
+    indexEnd: this.state.indexEnd +1,
+    showPrevious: true,
   });
 }
 else {
-  this.setState({
-    indexStart: this.state.indexStart+10,
-    indexEnd: this.state.indexEnd +10,
-    showNext: false
-  })
-}
-  this.scrollToRef();
-}
+    this.setState({
+      indexStart: this.state.indexStart+1,
+      indexEnd: this.state.indexEnd +1,
+    });
+  }
+  }
 previous() {
-  if (this.state.indexStart === 10) {
+  if (this.state.indexStart === 1) {
   this.setState({
-    indexStart: this.state.indexStart -10,
-    indexEnd: this.state.indexEnd -10,
+    indexStart: this.state.indexStart -1,
+    indexEnd: this.state.indexEnd -1,
     showPrevious: false,
   })
 }
-else if (this.state.indexStart ===20) {
+else if (this.state.indexStart > 1) {
   this.setState({
-    indexStart: this.state.indexStart -10,
-    indexEnd: this.state.indexEnd -10,
-    showFirst: false,
-  })
-
-}
-else {
-  this.setState({
-    indexStart: this.state.indexStart -10,
-    indexEnd: this.state.indexEnd -10,
-    showNext: true  
-  })
-
-}
-this.scrollToRef();
+    indexStart: this.state.indexStart -1,
+    indexEnd: this.state.indexEnd -1,
+    showNext: true,
+        })
+    }
 }
 
 first() {
   this.setState({
     indexStart: 0,
-    indexEnd: 10,
+    indexEnd: 1,
     showNext: true,
     showPrevious: false,
     showFirst: false
   })
-this.scrollToRef();
+
 }
 newestList() { 
   this.setState({
@@ -233,7 +221,7 @@ newestList() {
     popularButton: "jp-notClicked",
     newestButton: "jp-clicked"
   })
-  this.scrollToRef();
+  
 }
 popularList() {
   this.setState({
@@ -243,7 +231,7 @@ popularList() {
     popularButton: "jp-clicked",
     newestButton: "jp-notClicked"
   })
-  this.scrollToRef();
+
 }
 
 
@@ -390,8 +378,8 @@ popularList() {
           <div>Lines Inner row divs</div>
           <div className = "jp-reviews-2-inner-slider">
 
-          <div className = "jp-reviews-2-previous" onClick = {this.previous}> 
-          <i className = "jp-reviews-2-arrow-left"></i> </div>
+          {this.state.showPrevious ? <div className = "jp-reviews-2-previous" onClick = {this.previous}> 
+          <i className = "jp-reviews-2-arrow-left"></i> </div> : null}
             <div className = "jp-reviews-2-slider-wrapper"> 
               {this.state.reviews.slice(this.state.indexStart, this.state.indexEnd).map((review) => (
               <ReviewList review = {review}     
@@ -399,10 +387,10 @@ popularList() {
               ))}
               
               </div>
-              <div className = "jp-reviews-2-next" onClick = {this.previous}> 
-          <i className = "jp-reviews-2-arrow-right"></i> </div>
+              {this.state.showNext ? <div className = "jp-reviews-2-next" onClick = {this.next}> 
+          <i className = "jp-reviews-2-arrow-right"></i> </div> : null}
           </div>
-
+ 
           
          
       </div>
