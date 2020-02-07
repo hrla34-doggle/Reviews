@@ -321,7 +321,7 @@ popularList() {
             </div>
             <div className = "jp-reviews-2-boxTwoThree">
                 <div className = "jp-reviews-2-boxTwoThree-row-1">Customer Experience</div>
-                <div className = "jp-reviews-2-boxTwoThree-row-2">Customer experience is the standard of service you receive</div>
+                <div className = "jp-reviews-2-boxTwoThree-row-2">Customer experience is the standard of service<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
                 <div className = "jp-reviews-2-boxTwoThree-row-3">
                     <div className = "jp-reviews-2-boxTwoThree-row3-row-1">
                         <div className = "jp-reviews-2-boxTwoThree-row3-row-1-column-1">{this.state.customerRating}</div>
@@ -379,7 +379,7 @@ popularList() {
           <div className = "jp-reviews-2-inner-slider">
 
           {this.state.showPrevious ? <div className = "jp-reviews-2-previous" onClick = {this.previous}> 
-          <i className = "jp-reviews-2-arrow-left"></i> </div> : null}
+          <i className = "jp-reviews-2-arrow-left"></i> </div> : <div className = "jp-reviews-2-previous-empty"></div>}
             <div className = "jp-reviews-2-slider-wrapper"> 
               {this.state.reviews.slice(this.state.indexStart, this.state.indexEnd).map((review) => (
               <ReviewList review = {review}     
@@ -388,7 +388,7 @@ popularList() {
               
               </div>
               {this.state.showNext ? <div className = "jp-reviews-2-next" onClick = {this.next}> 
-          <i className = "jp-reviews-2-arrow-right"></i> </div> : null}
+          <i className = "jp-reviews-2-arrow-right"></i> </div> :<div className = "jp-reviews-2-next-empty"></div> }
           </div>
  
           

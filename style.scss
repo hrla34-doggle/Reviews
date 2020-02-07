@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Secular+One&display=swap');
 body {
   background: white;
+  min-width: 1200px;
 }
 .jp-clicked {
 display: inline-block;
@@ -562,6 +563,7 @@ align-items: center;
   -webkit-transform: rotate(-45deg);
 }
 
+
 .jp-reviews-2-next {
   border-radius: 50%;
   background: white;
@@ -581,6 +583,26 @@ align-items: center;
   
   
 }
+
+.jp-reviews-2-next-empty {
+  background: #faeeec;
+  width: 40px;
+  height: 40px;
+  justify-content: 0;
+  margin-left: 51px;
+
+}
+
+.jp-reviews-2-previous-empty {
+  background: #faeeec;
+  width: 40px;
+  height: 40px;
+  justify-content: 0;
+  margin-right: 51px;
+
+  
+}
+
 
 .jp-reviews-2-slider-wrapper {
   // transform: translateX(100%);
@@ -616,7 +638,8 @@ align-items: center;
 .jp-reviews-2-dates {
   align-self: flex-end;
   display:flex;
-  padding-top: 5px;
+  padding: 5px 15px 0px 0px;
+  font-size: 14px;
 
 }
 .jp-reviews-2-quotes {
@@ -626,7 +649,7 @@ align-items: center;
   
 }
 .jp-reviews-2-quotes-quote {
-  font-size: 60px;
+  font-size: 50px;
   line-height: 1em;
   font-family: 'Secular One', sans-serif;
 }
@@ -635,31 +658,44 @@ align-items: center;
   transform: rotateY(180deg);
 }
 .jp-reviews-2-quotes-info {
-  padding: 7px 3px 0px 3px;
+  padding: 3px 5px 0px 5px;
   font-size: 20px;
 }
 .jp-reviews-2-description {
   display: flex;
   padding-left: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 
 }
 .jp-reviews-2-tripRating {
   display: flex;
   flex-direction: row;
+  padding: 0px 0px 0px 25px;
 
+}
+.jp-reviews-2-tripRating-title {
+  font-size: 19px;
+  font-family: Heebo;
+  font-weight: 700;
+  line-height: 1em;
+  padding-right: 10px;
+  padding-top: 8px;
 }
 
 .jp-reviews-2-rating-medium {
   display: inline-block;
   unicode-bidi: bidi-override;
   color: white;
-  font-size: 15px;
-  height: 15px;
+  font-size: 18px;
+  height: 18px;
   width: auto;
   margin: 0;
   position: relative;
   padding: 0;
-  
+  line-height: 1em;
+  margin-right: 5px;
+  padding-top: 8px;
 
 }
 
@@ -672,6 +708,8 @@ align-items: center;
   top: 0;
   left: 0;
   overflow: hidden;
+  line-height: 1em;
+  padding-top: 8px;
 }
 
 .jp-reviews-2-rating-medium-lower {
@@ -679,9 +717,13 @@ align-items: center;
   display: flex;
   z-index: 0;
   text-shadow: -1px 0  rgb(244, 218, 28), 0 1px  rgb(244, 218, 28), 1px 0 rgb(244, 218, 28), 0 -1px  rgb(244, 218, 28);
+  line-height: 1em;
 }
 .jp-star-margins {
   margin-right: 2px;
+}
+.jp-star-margins-2 {
+  margin-right: 4px;
 }
 
 .jp-reviews-2-rating-lowest {
@@ -723,7 +765,50 @@ align-items: center;
   display: flex;
 }
 
+.bubble
+{
+position: relative;
+width: 10px;
+height: 10px;
+padding: 10px;
+background: #fafafc;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 6px;
+border: #e6e6e6 solid 1px;
+line-height: em;
+}
 
+
+.bubble:after
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 4px 4px 4px 0;
+border-color: transparent #e6e6e6;
+display: block;
+width: 0;
+z-index: 1;
+margin-top: -5px;
+left: -5px;
+top: 50%;
+}
+
+.bubble:before
+{
+content: '';
+position: absolute;
+border-style: solid;
+border-width: 1px 1px 1px 0;
+border-color: transparent white;
+display: block;
+width: 0;
+z-index: 0;
+margin-top: -5px;
+left: -6px;
+top: 50%;
+}
 /* 
 .navbar {
   background: #fff;

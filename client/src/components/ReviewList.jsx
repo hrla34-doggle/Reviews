@@ -16,25 +16,23 @@ const ReviewList = (props) => {
      <div className ="jp-reviews-2-quotes-quote" >"</div>
    </div>
    <div className ="jp-reviews-2-tripRating">
-      <div>Trip Rating  </div>
+      <div className="jp-reviews-2-tripRating-title"> Trip Rating  </div>
       <div className="jp-reviews-2-rating-medium">
-  <div className="jp-reviews-2-rating-medium-upper" style = {{width: `${props.review.score *20}%`}}><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span></div>
-  <div className="jp-reviews-2-rating-medium-lower"><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span></div>
+  <div className="jp-reviews-2-rating-medium-upper" style = {{width: `${props.review.score *20}%`}}><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span></div>
+  <div className="jp-reviews-2-rating-medium-lower"><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span></div>
 </div>
-<div> {props.review.score}</div>
+<div className = "bubble"> {props.review.score}</div>
 </div>
-    <div className = "jp-reviews-2-description">""{props.review.description}</div>
-   <div className ="jp-reviews-2-tripRating">
-      <div>Customer Experience  </div>
+    <div className = "jp-reviews-2-description">{props.review.description}</div>
+    <div className ="jp-reviews-2-tripRating">
+      <div className="jp-reviews-2-tripRating-title"> Customer Experience  </div>
       <div className="jp-reviews-2-rating-medium">
-  <div className="jp-reviews-2-rating-medium-upper" style = {{width: `${props.review.customerScore *20}%`}}><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span></div>
-  <div className="jp-reviews-2-rating-medium-lower"><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span><span className="jp-star-margins">★</span></div>
+  <div className="jp-reviews-2-rating-medium-upper" style = {{width: `${props.review.customerScore *20}%`}}><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span></div>
+  <div className="jp-reviews-2-rating-medium-lower"><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span><span className="jp-star-margins-2">★</span></div>
 </div>
-<div> {props.review.customerScore}</div>
-
-   </div>
-   <div>{props.review.customerReview} </div>
-   <div className = "jp-reviews-2-customerRating"></div>
+<div className = "bubble"> {props.review.customerScore}</div>
+</div>
+    <div className = "jp-reviews-2-description">{props.review.customerReview}</div>
     
 </div>
   
