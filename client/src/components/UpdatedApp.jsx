@@ -55,8 +55,9 @@ class UpdatedApp extends React.Component {
 //   scrollToRef = () => window.scrollTo({left: 0, top: this.reviewRef.current.offsetTop, behavior: 'smooth'}) 
 
   getList() {
+    let id =1;
     axios
-    .get('/api') 
+    .get(`/api/${id}`) 
     .then((data) => {
         let averagedScore = 0;
         let tripAverage = 0;
@@ -74,73 +75,76 @@ class UpdatedApp extends React.Component {
         let tripScoreThree = 0;
         let tripScoreTwo = 0;
         let tripScoreOne = 0;
-        for (var i = 0; i < data.data.length; i++) {
+        data.data.review.sort(function(a, b) { 
+          return a.time - b.time;
+        });
+        for (var i = 0; i < data.data.review.length; i++) {
             
-             tripScore += data.data[i].score;
-             customerScore += data.data[i].customerScore;
-             if (data.data[i].score === 5) {
+             tripScore += data.data.review[i].score;
+             customerScore += data.data.review[i].customerScore;
+             if (data.data.review[i].score === 5) {
                  tripScoreFive++;
              }
-             if (data.data[i].score === 4) {
+             if (data.data.review[i].score === 4) {
                 tripScoreFour++;
             }
-            if (data.data[i].score === 3) {
+            if (data.data.review[i].score === 3) {
                 tripScoreThree++;
             }
-            if (data.data[i].score === 2) {
+            if (data.data.review[i].score === 2) {
                 tripScoreTwo++;
             }
-            if (data.data[i].score === 1) {
+            if (data.data.review[i].score === 1) {
                 tripScoreOne++;
             }
-            if (data.data[i].customerScore === 5) {
+            if (data.data.review[i].customerScore === 5) {
                 customerScoreFive++;
             }
-            if (data.data[i].customerScore === 4) {
+            if (data.data.review[i].customerScore === 4) {
                 customerScoreFour++;
            }
-           if (data.data[i].customerScore === 3) {
+           if (data.data.review[i].customerScore === 3) {
                 customerScoreThree++;
            }
-           if (data.data[i].customerScore === 2) {
+           if (data.data.review[i].customerScore === 2) {
                customerScoreTwo++;
            }
-           if (data.data[i].customerScore === 1) {
+           if (data.data.review[i].customerScore === 1) {
                customerScoreOne++;
            }
-            if (data.data[i].time <60) {
-                data.data[i].time = data.data[i].time + " seconds ago";
+            if (data.data.review[i].time <60) {
+                data.data.review[i].time = data.data.review[i].time + " seconds ago";
             }
-            else if (data.data[i].time >= 60  && data.data[i].time < 3600) {
-                tempTime = data.data[i].time % 59;
-                data.data[i].time = tempTime + " minutes ago";
+            else if (data.data.review[i].time >= 60  && data.data.review[i].time < 3600) {
+                tempTime = data.data.review[i].time % 59;
+                data.data.review[i].time = tempTime + " minutes ago";
             }
-            else if (data.data[i].time >= 3600 && data.data[i].time < 86400) {
-                tempTime = Math.floor(data.data[i].time / 3600);
-                data.data[i].time = tempTime + " hours ago"; 
+            else if (data.data.review[i].time >= 3600 && data.data.review[i].time < 86400) {
+                tempTime = Math.floor(data.data.review[i].time / 3600);
+                data.data.review[i].time = tempTime + " hours ago"; 
             }
-            else if (data.data[i].time >= 86400 && data.data[i].time < 2592000) {
-                tempTime = Math.floor(data.data[i].time / 86400);
-                data.data[i].time = tempTime + " days ago"; 
+            else if (data.data.review[i].time >= 86400 && data.data.review[i].time < 2592000) {
+                tempTime = Math.floor(data.data.review[i].time / 86400);
+                data.data.review[i].time = tempTime + " days ago"; 
             }
-            else if (data.data[i].time >= 2592000 && data.data[i].time < 31104000) {
-                tempTime = Math.floor(data.data[i].time / 2592000);
-                data.data[i].time = tempTime + " months ago"; 
+            else if (data.data.review[i].time >= 2592000 && data.data.review[i].time < 31104000) {
+                tempTime = Math.floor(data.data.review[i].time / 2592000);
+                data.data.review[i].time = tempTime + " months ago"; 
             }
-            else if (data.data[i].time >= 31104000) {
-                tempTime = Math.floor(data.data[i].time / 31104000);
-                data.data[i].time = tempTime + " years ago"; 
+            else if (data.data.review[i].time >= 31104000) {
+                tempTime = Math.floor(data.data.review[i].time / 31104000);
+                data.data.review[i].time = tempTime + " years ago"; 
             }
         }
-        tripAverage = parseFloat( tripScore/ (data.data.length)).toFixed(1);
-        customerAverage = parseFloat(customerScore / (data.data.length)).toFixed(1);
-        averagedScore = parseFloat((tripScore + customerScore) / (data.data.length *2)).toFixed(1);
-        let popularSorted = data.data.slice().sort(function(a, b) { 
+        tripAverage = parseFloat( tripScore/ (data.data.review.length)).toFixed(1);
+        customerAverage = parseFloat(customerScore / (data.data.review.length)).toFixed(1);
+        averagedScore = parseFloat((tripScore + customerScore) / (data.data.review.length *2)).toFixed(1);
+        let popularSorted = data.data.review.slice().sort(function(a, b) { 
           return b.likes - a.likes;
         });
       this.setState({
-        reviews: data.data,
-        newest: data.data,
+        reviews: data.data.review,
+        newest: data.data.review,
         popular: popularSorted,
         averageScore: averagedScore,
         tripRating: tripAverage,
@@ -155,7 +159,7 @@ class UpdatedApp extends React.Component {
         customerThree: customerScoreThree,
         customerTwo: customerScoreTwo,
         customerOne: customerScoreOne,
-        country: data.data[0].trips
+        country: data.data.trips,
         })
     })
     .catch((err) => {

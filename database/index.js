@@ -7,16 +7,20 @@ db.once('open', function() {
 });
 
 var reviewSchema = new mongoose.Schema({
-    name: String,
-    id: Number,
-    score: Number,
-    description: String,
-    likes: Number,
-    time: Number,
-    customerScore: Number,
-    customerReview: String,
-    quotes: String,
     trips: String,
+    id: Number,
+    review: [{
+      name: String,
+      score: Number,
+      description: String,
+      likes: Number,
+      time: Number,
+      customerScore: Number,
+      customerReview: String,
+      quotes: String,
+    }]
+   
+    
   });
 
   var Reviews = mongoose.model('Reviews', reviewSchema);   

@@ -2,7 +2,7 @@ const Reviews = require('./');
 var mongoose = require('mongoose');
 
 const quotes = ["AMAZING!!!!!!", "We had a blast", "The tour guides made this trip", "Travel Fever", "I wish I could have gone, but HR took up my life", "Save me", "I was distracted by the latest thing Trump did"]
-const trips = ['Egypt', 'Kenya', 'Morocco', 'South Africa','China', 'Israel', 'India', 'Japan', 'South Korea', 'Thailand', 'Vietnam','France', 'Germany', 'Greece', 'Ireland', 'Italy', 'Netherlands', 'Norway', 'Poland', 'Portugal', 'Russia', 'Spain', 'Switzerland', 'United Kingdom','United States', 'Costa_Rica', 'Mexico', 'Canada','Brazil', 'Peru', 'Australia', 'New Zealand', 'Colombia'];
+const trips = ['Egypt', 'Kenya', 'Morocco', 'South Africa','China', 'Israel', 'India', 'Japan', 'South Korea', 'Thailand', 'Vietnam','France', 'Germany', 'Greece', 'Ireland', 'Italy', 'Netherlands', 'Norway', 'Poland', 'Portugal', 'Russia', 'Spain', 'Switzerland', 'United Kingdom','United States', 'Costa Rica', 'Mexico', 'Canada','Brazil', 'Peru', 'Australia', 'New Zealand', 'Colombia'];
 const firstName = ['Jonathan', 'Sam', 'Brian', "Steven", "Shawn", "Eric", "Allen", "Matt", "Sarah", "Monique", "Evelyn", "Lindsey", "Gerard", "Ray", "Mikey", "Frank", "Shana", "Shala", "Sherry", "Sue", "Rose", "David"];
 const lastName = ['Smith', 'Adams', 'Parker', 'Windsor', 'Markyle', 'Tuttle', 'McCormick', "Boswell", "Magnier", "Doyle", "Kennedy", "Hill", "Jones", "Wilson", 'Stark', "King", "Lopez", "Cook", "Henderson", "Bailey"];
 const first = ['I', 'We', 'My parents', "My kids", "My grandparents", "My wife", "My Husband", "I", "I"];
@@ -19,7 +19,7 @@ const createProduct = () => {
   product.quotes = quotes[Math.floor(Math.random() * Math.floor(quotes.length))]
   product.customerScore = customerItem[1];
   product.score = secondItem[1];
-  product.trips = trips[Math.floor(Math.random() * Math.floor(trips.length))]
+  
   product.name = `${firstName[Math.floor(Math.random() * Math.floor(firstName.length))]} ${lastName[Math.floor(Math.random() * Math.floor(lastName.length))]}`;
   product.description = `${first[Math.floor(Math.random() * Math.floor(first.length))]} ${secondPhrase} ${third[Math.floor(Math.random() * Math.floor(third.length))]}`;
   product.likes = parseFloat(Math.ceil(Math.random() * Math.ceil(100)));
@@ -28,18 +28,28 @@ const createProduct = () => {
 };
 
 const createProducts = () => {
+  let random = Math.floor(Math.random() * (100 - 10 + 1) ) + 10;
   let productsArr = [];
-  for(let i = 0; i < 500; i++){
+  for(let i = 0; i < random; i++){
       var tempObj = createProduct();
-      tempObj.id = i+1;
     productsArr.push(tempObj);
   }
   return productsArr
 }
 
 const insertMockData = function() {
-Reviews.create(createProducts());
+
+  for (let i = 0; i < 100; i++) {
+    let document = {};
+    document.trips = trips[Math.floor(Math.random() * Math.floor(trips.length))];
+    document.id = i+1;
+    document.review = createProducts();
+    var char = new Reviews(document);
+    char.save();
+  }
+
 
 };
 insertMockData();
+
 

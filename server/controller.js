@@ -2,7 +2,8 @@ const helper = require('../database/dbHelpers')
 
 const controller = {
     get: (req, res) => {
-        helper.get()
+    
+        helper.get(req.params.id)
         .then((data) => {
             res.status(200).send(data)
         })

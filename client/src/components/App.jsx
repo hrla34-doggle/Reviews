@@ -48,29 +48,29 @@ class App extends React.Component {
         let averagedScore = 0;
         let tempTime = 0;
         for (var i = 0; i < data.data.length; i++) {
-            averagedScore += data.data[i].score;
-            if (data.data[i].time <60) {
-                data.data[i].time = data.data[i].time + " seconds ago";
+            averagedScore += data.data.review[i].score;
+            if (data.data.review[i].time <60) {
+                data.data.review[i].time = data.data.review[i].time + " seconds ago";
             }
-            else if (data.data[i].time >= 60  && data.data[i].time < 3600) {
-                tempTime = data.data[i].time % 59;
-                data.data[i].time = tempTime + " minutes ago";
+            else if (data.data.review[i].time >= 60  && data.data.review[i].time < 3600) {
+                tempTime = data.data.review[i].time % 59;
+                data.data.review[i].time = tempTime + " minutes ago";
             }
-            else if (data.data[i].time >= 3600 && data.data[i].time < 86400) {
-                tempTime = Math.floor(data.data[i].time / 3600);
-                data.data[i].time = tempTime + " hours ago"; 
+            else if (data.data.review[i].time >= 3600 && data.data.review[i].time < 86400) {
+                tempTime = Math.floor(data.data.review[i].time / 3600);
+                data.data.review[i].time = tempTime + " hours ago"; 
             }
-            else if (data.data[i].time >= 86400 && data.data[i].time < 2592000) {
-                tempTime = Math.floor(data.data[i].time / 86400);
-                data.data[i].time = tempTime + " days ago"; 
+            else if (data.data.review[i].time >= 86400 && data.data.review[i].time < 2592000) {
+                tempTime = Math.floor(data.data.review[i].time / 86400);
+                data.data.review[i].time = tempTime + " days ago"; 
             }
-            else if (data.data[i].time >= 2592000 && data.data[i].time < 31104000) {
-                tempTime = Math.floor(data.data[i].time / 2592000);
-                data.data[i].time = tempTime + " months ago"; 
+            else if (data.data.review[i].time >= 2592000 && data.data.review[i].time < 31104000) {
+                tempTime = Math.floor(data.data.review[i].time / 2592000);
+                data.data.review[i].time = tempTime + " months ago"; 
             }
-            else if (data.data[i].time >= 31104000) {
-                tempTime = Math.floor(data.data[i].time / 31104000);
-                data.data[i].time = tempTime + " years ago"; 
+            else if (data.data.review[i].time >= 31104000) {
+                tempTime = Math.floor(data.data.review[i].time / 31104000);
+                data.data.review[i].time = tempTime + " years ago"; 
             }
         }
         averagedScore = parseFloat(averagedScore / (data.data.length +1)).toFixed(1);

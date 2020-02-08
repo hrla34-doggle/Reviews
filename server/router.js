@@ -3,7 +3,7 @@ var controller = require('./controller.js');
 
 
 Router
-.route('/api')
+.route(`/api/:id`)
 .get(controller.get)
 // .post(controller.post)
 
