@@ -55,7 +55,13 @@ class UpdatedApp extends React.Component {
 //   scrollToRef = () => window.scrollTo({left: 0, top: this.reviewRef.current.offsetTop, behavior: 'smooth'}) 
 
   getList() {
-    let id =1;
+    
+    var url = window.location.href.toString().split('/');
+    console.log(url);
+    let urlid = url.slice(url.length-1);
+    console.log(urlid);
+    let id = 1;
+
     axios
     .get(`/api/${id}`) 
     .then((data) => {
