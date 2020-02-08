@@ -63,7 +63,7 @@ class UpdatedApp extends React.Component {
     let id = 1;
 
     axios
-    .get(`/api/${id}`) 
+    .get(`/api/${urlid}`) 
     .then((data) => {
         let averagedScore = 0;
         let tripAverage = 0;
@@ -385,7 +385,7 @@ popularList() {
             </div>
 
           </div> 
-          <div>Lines Inner row divs</div>
+          <div className = "jp-reviews-2-viewAll">VIEW ALL {this.state.reviews.length} REVIEWS</div>
           <div className = "jp-reviews-2-inner-slider">
 
           {this.state.showPrevious ? <div className = "jp-reviews-2-previous" onClick = {this.previous}> 
