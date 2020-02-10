@@ -281,7 +281,7 @@ align-items: center;
   border-right: 1px solid #e6e6e6;
 }
 .jp-reviews-2-boxOne-row-1 {
-  font-family: Heebo;
+  font-family: Futura-Next;
   font-weight: 700;
   font-size: 22px;
   padding: 0px;
@@ -289,7 +289,7 @@ align-items: center;
 }
 .jp-reviews-2-bs {
   font-size: 50px;
-  font-family: sans-serif;
+  font-family: Futura-Heavy;
   font-weight: bold;
 }
 .jp-reviews-2-boxOne-row-3 {
@@ -335,7 +335,8 @@ align-items: center;
   flex-grow: 2;
   flex-direction: column;
   align-items: center;
-  background:#fbfbfb
+  background:#fbfbfb;
+  justify-content: center;
   }
   .jp-reviews-2-boxTwoThree-row3-row-1-column-1 {
   font-family: sans-serif;
@@ -651,23 +652,67 @@ align-items: center;
   outline-style:none;
 
 }
+.jp-reviews-2-name-wrapper {
+  display: flex;
+  align-content: flex-start;
+  width: 100%;
+  background: #fbfbfb;
+  justify-content: flex-start;
+
+  padding: 10px 0px 10px 0px;
+
+
+}
+
+.jp-reviews-2-name-icon {
+  display: flex;
+  align-content: flex-start;
+  background: #fbfbfb;
+  margin-left: 25px;
+  margin-right: 5px;
+  margin-top: 1px;
+
+}
 .jp-reviews-2-name {
   display: flex;
-  align-self: start;
+  align-content: flex-start;
   width: 100%;
-
-  padding: 10px 0px 5px 25px;
+  background: #fbfbfb;
+  margin-left: 5px;
 
 }
 .jp-reviews-2-border {
   border-bottom: 1px solid #e6e6e6;
   width: 100%;
 }
-.jp-reviews-2-dates {
+.jp-reviews-2-dates-wrapper {
   align-self: flex-end;
   display:flex;
-  padding: 5px 15px 0px 0px;
+  padding: 10px 15px 10px 0px;
   font-size: 14px;
+  background: #fbfbfb;
+  justify-content: flex-end;
+  width: 13%;
+  line-height: 1em;
+
+}
+.jp-reviews-2-dates-svg {
+  
+  font-weight: 500;
+  padding-right: 5px;
+  color: black;
+  align-content: center;
+  line-height: 1em;
+  justify-content: center;
+
+}
+
+.jp-reviews-2-dates{
+  color: black;
+  justify-content: flex-end;
+  line-height: 1em;
+  margin-top: 2px;
+  
 
 }
 .jp-reviews-2-quotes {
@@ -866,6 +911,22 @@ top: 50%;
   // -webkit-tap-highlight-color: transparent;
   width: 1px;
   cursor: none;
+}
+
+
+@font-face {
+  font-family: Futura-Next;
+  src: url(unicode.futurab.ttf);
+}
+
+@font-face {
+  font-family: Futura-Med;
+  src: url(futura.medium.bt.ttf);
+}
+
+@font-face {
+  font-family: Futura-Heavy;
+  src: url(Futura.Heavy.font.ttf);
 }
 /* 
 .navbar {
