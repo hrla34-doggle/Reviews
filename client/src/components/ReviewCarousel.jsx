@@ -6,7 +6,7 @@ const ReviewList = (props) => {
    return(
      <div className ="jp-reviews-2-list">
       <div className = "jp-reviews-2-name">{props.review.name}</div>
-      <div className = "jp-reviews-2-border"></div>
+ 
     
     <div className = "jp-reviews-2-dates">{props.review.time} </div>
    
@@ -41,5 +41,5 @@ const ReviewList = (props) => {
 
 export default ReviewList
 
-
-
+const[current, setCurrent] =React.useState(0)
+setCurrent(count +1);

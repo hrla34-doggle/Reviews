@@ -226,6 +226,7 @@ align-items: center;
   font-size: 14px;
   padding: 10px;
   margin: 20px;
+  justify-content: center;
   }
 
   .jp-reviews-2-title {
@@ -301,7 +302,7 @@ align-items: center;
  font-family: Heebo;
  margin-top: 20px;
  font-weight: 700;
- width: 50%;
+ width: 70%;
 }
 .jp-reviews-2-box-padding {
   margin-top: 0px;
@@ -648,9 +649,13 @@ align-items: center;
   display: flex;
   align-self: start;
   width: 100%;
-  border-bottom: 1px solid #e6e6e6;
+
   padding: 10px 0px 5px 25px;
 
+}
+.jp-reviews-2-border {
+  border-bottom: 1px solid #e6e6e6;
+  width: 100%;
 }
 .jp-reviews-2-dates {
   align-self: flex-end;

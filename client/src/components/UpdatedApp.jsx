@@ -397,6 +397,7 @@ popularList() {
               ))}
               
               </div>
+              
               {this.state.showNext ? <div className = "jp-reviews-2-next" onClick = {this.next}> 
           <i className = "jp-reviews-2-arrow-right"></i> </div> :<div className = "jp-reviews-2-next-empty"></div> }
           </div>
