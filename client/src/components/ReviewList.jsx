@@ -33,7 +33,7 @@ const ReviewList = (props) => {
 <div className = "bubble"> {props.review.customerScore}</div>
 </div>
     <div className = "jp-reviews-2-description">{props.review.customerReview}</div>
-    
+    <div className = "jp-reviews-2-description jp-reviews-2-noSelect">&nbsp;</div>
 </div>
   
   )

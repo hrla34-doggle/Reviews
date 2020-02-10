@@ -527,6 +527,7 @@ align-items: center;
   outline: none;
   font-size: 30px;
   padding-left: 0px;
+  outline-style:none;
   
 }
 
@@ -539,6 +540,7 @@ align-items: center;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
+  outline: none;
   
 }
 
@@ -581,6 +583,7 @@ align-items: center;
   font-size: 30px;
   padding-left: 0px;
   margin-left: 50px;
+  outline-style:none;
   
   
 }
@@ -591,6 +594,7 @@ align-items: center;
   height: 40px;
   justify-content: 0;
   margin-left: 52px;
+  outline-style:none;
 
 }
 
@@ -600,6 +604,7 @@ align-items: center;
   height: 40px;
   justify-content: 0;
   margin-right: 51px;
+  outline-style:none;
 
   
 }
@@ -643,6 +648,7 @@ align-items: center;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  outline-style:none;
 
 }
 .jp-reviews-2-name {
@@ -688,7 +694,7 @@ align-items: center;
   padding-left: 25px;
   margin-top: 15px;
   margin-bottom: 15px;
-
+  outline-style:none;
 }
 .jp-reviews-2-tripRating {
   display: flex;
@@ -853,6 +859,13 @@ top: 50%;
 
   
   
+}
+.jp-reviews-2-noSelect {
+
+  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0); 
+  // -webkit-tap-highlight-color: transparent;
+  width: 1px;
+  cursor: none;
 }
 /* 
 .navbar {
