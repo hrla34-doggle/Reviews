@@ -63,7 +63,8 @@ class UpdatedApp extends React.Component {
     let id = 1;
 
     axios
-    .get(`/api/${urlid}`) 
+    // .get(`/api/${urlid}`) 
+    .get(`/api/1`)
     .then((data) => {
         let averagedScore = 0;
         let tripAverage = 0;

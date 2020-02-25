@@ -6,8 +6,14 @@
   "scripts": {
     "build": "webpack -d --watch",
     "start": "nodemon ./server/index.js",
+    "xstart": "nodemon ./server/xindex.js",
     "do:sass": "node-sass -r --output-style compressed style.scss -o client/dist",
-    "watch:sass": "npm run do:sass && npm run do:sass -- -w"
+    "watch:sass": "npm run do:sass && npm run do:sass -- -w",
+    "seed": "node ./database/seedData.js",
+    "xseed": "node ./database/xseedData.js",
+    "x2seed": "node ./database/xseedDataReview.js",
+    "x3seed": "node ./database/xseedDataReview2.js",
+    "x4seed": "node ./database/xseedDataReview3.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -16,17 +22,22 @@
     "cors": "^2.8.5",
     "css-loader": "^3.4.2",
     "express": "^4.16.4",
+    "faker": "^4.1.0",
+    "fast-csv": "^4.0.2",
     "mongoose": "^5.8.11",
     "morgan": "^1.9.1",
+    "newrelic": "^6.4.1",
     "node-sass": "^4.13.1",
     "nodemon": "^1.18.10",
+    "objects-to-csv": "^1.3.6",
     "path": "0.12.7",
+    "pg": "^7.18.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "sass": "^1.25.0",
     "style-loader": "^1.1.3",
-    "xcode": "^2.1.0",
-    "url-loader": "^3.0.0"
+    "url-loader": "^3.0.0",
+    "xcode": "^2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
