@@ -3,13 +3,14 @@ var controller = require('./controller.js');
 
 
 Router
-.route(`/api/:id`)
-.get(controller.get)
-// .post(controller.post)
+  .route(`/api/:id`)
+  .get(controller.get)
+  .put(controller.put)
+  .delete(controller.delete)
 
-// Router
-// .route('/api/id')
-// .put(controller.update)
-// .delete(controller.delete)
+Router
+  .route('/api')
+  .post(controller.post)
+
 
 module.exports = Router
